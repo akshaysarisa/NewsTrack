@@ -1,3 +1,4 @@
+
 -- NewsTrack Phase 3
 -- Table 3: DAILY_SCHEDULE
 
@@ -20,7 +21,11 @@ CREATE TABLE IF NOT EXISTS DAILY_SCHEDULE (
         CHECK (end_time > start_time),
 
     CONSTRAINT uq_program_broadcast_slot
-        UNIQUE (program_id, broadcast_date, start_time)
+        UNIQUE (program_id, broadcast_date, start_time),
+
+    INDEX idx_schedule_date (broadcast_date),
+    INDEX idx_schedule_program_date (program_id, broadcast_date)
+
 ) ENGINE = InnoDB;
 
 DESCRIBE DAILY_SCHEDULE;
